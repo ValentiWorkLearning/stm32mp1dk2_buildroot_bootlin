@@ -1,0 +1,1 @@
+docker run -t -i -v $pwd/build_volume:/build_volume mp157_build /bin/bash 

@@ -1,0 +1,1 @@
+docker build -t mp157_build .

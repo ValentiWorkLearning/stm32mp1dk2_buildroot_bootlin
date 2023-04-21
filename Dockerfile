@@ -1,14 +1,49 @@
 FROM ubuntu
 LABEL MP157DK1 build container
-RUN apt-get update
-RUN apt-get -y install git gcc curl vim build-essential
-RUN apt-get -y install swig bison flex gcc-arm-linux-gnueabi
-RUN apt-get -y install python3 python3-pip python3-distutils
-RUN apt-get -y install openssl libssl-dev device-tree-compiler
-RUN apt-get -y install cpio lzop
-RUN apt-get -y install bc lsb-release lzma man-db gettext pkg-config libmpc-dev u-boot-tools
-RUN apt-get -y install libncurses5-dev wget
-RUN apt-get -y install file unzip rsync
+RUN apt-get update && \
+    apt-get install -y \
+    build-essential \
+    bash \
+    bc \
+    binutils \
+    build-essential \
+    bzip2 \
+    cpio \
+    g++ \
+    gcc \
+    git \
+    gzip \
+    locales \
+    libncurses5-dev \
+    libdevmapper-dev \
+    libsystemd-dev \
+    make \
+    mercurial \
+    whois \
+    patch \
+    perl \
+    python3 \
+    rsync \
+    sed \
+    tar \
+    vim \ 
+    unzip \
+    wget \
+    bison \
+    flex \
+    libssl-dev \
+    libfdt-dev \
+    file
+
+# Sometimes Buildroot need proper locale, e.g. when using a toolchain
+# based on glibc.
+RUN locale-gen en_US.utf8
+
 RUN echo 'export CC=arm-linux-gnueabi-' > ~/.bashrc
+RUN echo 'alias python=python3' > ~/.bashrc
+
+RUN wget https://bootstrap.pypa.io/get-pip.py
+RUN python3 get-pip.py
+
 WORKDIR /build_volume
 VOLUME ["/build_volume", "/rootfs"]
