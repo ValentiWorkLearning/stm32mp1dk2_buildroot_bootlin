@@ -3,6 +3,7 @@ cd stm32mp1dk2_buildroot_bootlin
 git submodule update --init
 cd buildroot 
 git checkout st/2022.02.7
+git cherry-pick f986b265511e6f4748595c8b7ea83f1f616ddd64
 cd ../stm32mp1dk2_buildroot_bootlin
 
 export REPO_ROOT=${PWD}
