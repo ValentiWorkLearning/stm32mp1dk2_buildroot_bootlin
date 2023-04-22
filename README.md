@@ -17,7 +17,7 @@ git submodule update --init
 cd buildroot 
 git checkout st/2022.02.7
 git cherry-pick f986b265511e6f4748595c8b7ea83f1f616ddd64
-cd ../stm32mp1dk2_buildroot_bootlin
+cd ..
 
 export REPO_ROOT=${PWD}
 make BR2_EXTERNAL=${REPO_ROOT}/buildroot-external-st -C buildroot O=/test_build st_stm32mp157c_dk2_demo_defconfig
